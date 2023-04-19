@@ -20,7 +20,10 @@ export const StudentForm = () => {
       .email("Invalid email format!")
       .required("email is mandatory"),
     stream: Yup.string().required("Stream is required field"),
-    password: Yup.string().required("password is required bro"),
+    password: Yup.string()
+      .min(8, "password must be atleast 8 characters long")
+      .max(25, "password should not more than 25 character long")
+      .required("password is required"),
   });
 
   const formik = useFormik({
