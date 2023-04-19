@@ -15,7 +15,6 @@ export const UserForm = () => {
 
   return (
     <>
-      <h4>UserForm</h4>
       <div className="form__container">
         <form onSubmit={formik.handleSubmit}>
           <label htmlFor="name">Name : </label>
