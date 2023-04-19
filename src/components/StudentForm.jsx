@@ -20,6 +20,7 @@ export const StudentForm = () => {
       .email("Invalid email format!")
       .required("email is mandatory"),
     stream: Yup.string().required("Stream is required field"),
+    password: Yup.string().required("password is required bro"),
   });
 
   const formik = useFormik({
@@ -71,6 +72,19 @@ export const StudentForm = () => {
           />
           {formik.errors.stream && formik.touched.stream && (
             <div className="error">{formik.errors.stream}</div>
+          )}
+          <label htmlFor="password">Password : </label>
+          <input
+            type="text"
+            id="password"
+            name="password"
+            autoComplete="off"
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          {formik.errors.password && formik.touched.password && (
+            <div className="error">{formik.errors.password}</div>
           )}
           <button type="submit">Submit : </button>
         </form>
