@@ -11,6 +11,27 @@ export const UserForm = () => {
     onSubmit: (values) => {
       console.log("values received are:", { values });
     },
+    validate: (values) => {
+      let errors = {};
+
+      if (!values.name) {
+        errors.name = "Required to enter name input field";
+      }
+
+      if (!values.email) {
+        errors.email = "Required to enter name email field";
+      } else if (
+        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+      ) {
+        errors.email = "Invalid email address";
+      }
+
+      if (!values.stream) {
+        errors.stream = "Required to enter name Stream field";
+      }
+
+      return errors;
+    },
   });
 
   return (
@@ -26,6 +47,9 @@ export const UserForm = () => {
             value={formik.values.name}
             onChange={formik.handleChange}
           />
+          {formik.errors.name && (
+            <div className="error">{formik.errors.name}</div>
+          )}
           <label htmlFor="email">Email : </label>
           <input
             type="email"
@@ -35,6 +59,9 @@ export const UserForm = () => {
             value={formik.values.email}
             onChange={formik.handleChange}
           />
+          {formik.errors.email && (
+            <div className="error">{formik.errors.email}</div>
+          )}
           <label htmlFor="stream">Stream : </label>
           <input
             type="text"
@@ -44,6 +71,9 @@ export const UserForm = () => {
             value={formik.values.stream}
             onChange={formik.handleChange}
           />
+          {formik.errors.stream && (
+            <div className="error">{formik.errors.stream}</div>
+          )}
           <button type="submit">Submit : </button>
         </form>
       </div>

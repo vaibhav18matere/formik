@@ -40,4 +40,7 @@ button {
   border-radius: 0.2rem;
   box-shadow: 0 8px 12px -6px #6d717a;
 }
+.error {
+  color: red;
+}
 
