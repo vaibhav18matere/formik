@@ -46,8 +46,9 @@ export const UserForm = () => {
             autoComplete="off"
             value={formik.values.name}
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           />
-          {formik.errors.name && (
+          {formik.errors.name && formik.touched.name && (
             <div className="error">{formik.errors.name}</div>
           )}
           <label htmlFor="email">Email : </label>
@@ -58,8 +59,9 @@ export const UserForm = () => {
             autoComplete="off"
             value={formik.values.email}
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           />
-          {formik.errors.email && (
+          {formik.errors.email && formik.touched.email && (
             <div className="error">{formik.errors.email}</div>
           )}
           <label htmlFor="stream">Stream : </label>
@@ -70,8 +72,9 @@ export const UserForm = () => {
             autoComplete="off"
             value={formik.values.stream}
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           />
-          {formik.errors.stream && (
+          {formik.errors.stream && formik.touched.stream && (
             <div className="error">{formik.errors.stream}</div>
           )}
           <button type="submit">Submit : </button>
