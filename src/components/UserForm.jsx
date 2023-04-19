@@ -37,6 +37,7 @@ export const UserForm = () => {
   return (
     <>
       <div className="form__container">
+        <span>using custom validation prop</span>
         <form onSubmit={formik.handleSubmit}>
           <label htmlFor="name">Name : </label>
           <input
