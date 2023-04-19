@@ -1,45 +1,39 @@
 import React from "react";
 import { useFormik } from "formik";
+import * as Yup from "yup";
 
-export const UserForm = () => {
+export const StudentForm = () => {
+  const initialValues = {
+    name: "",
+    email: "",
+    stream: "",
+    password: "",
+  };
+
+  const onSubmit = (values) => {
+    console.log("values received are:", { values });
+  };
+
+  const validationSchema = Yup.object({
+    name: Yup.string().required("Name is required!"),
+    email: Yup.string()
+      .email("Invalid email format!")
+      .required("email is mandatory"),
+    stream: Yup.string().required("Stream is required field"),
+  });
+
   const formik = useFormik({
-    initialValues: {
-      name: "",
-      email: "",
-      stream: "",
-    },
-    onSubmit: (values) => {
-      console.log("values received are:", { values });
-    },
-    validate: (values) => {
-      let errors = {};
-
-      if (!values.name) {
-        errors.name = "Required to enter name input field";
-      }
-
-      if (!values.email) {
-        errors.email = "Required to enter name email field";
-      } else if (
-        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-      ) {
-        errors.email = "Invalid email address";
-      }
-
-      if (!values.stream) {
-        errors.stream = "Required to enter name Stream field";
-      }
-
-      return errors;
-    },
+    initialValues,
+    onSubmit,
+    validationSchema,
   });
 
   return (
     <>
       <div className="form__container">
-        <span>using custom validation prop</span>
+        <span>using "yup" - third party library</span>
         <form onSubmit={formik.handleSubmit}>
-          <label htmlFor="name">Name : </label>
+          <label htmlFor="name">Student Name : </label>
           <input
             type="text"
             id="name"
@@ -52,7 +46,7 @@ export const UserForm = () => {
           {formik.errors.name && formik.touched.name && (
             <div className="error">{formik.errors.name}</div>
           )}
-          <label htmlFor="email">Email : </label>
+          <label htmlFor="email">Student Email : </label>
           <input
             type="email"
             id="email"
@@ -65,7 +59,7 @@ export const UserForm = () => {
           {formik.errors.email && formik.touched.email && (
             <div className="error">{formik.errors.email}</div>
           )}
-          <label htmlFor="stream">Stream : </label>
+          <label htmlFor="stream">Student Stream : </label>
           <input
             type="text"
             id="stream"
