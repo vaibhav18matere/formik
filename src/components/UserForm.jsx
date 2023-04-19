@@ -1,6 +1,18 @@
 import React from "react";
+import { useFormik } from "formik";
 
 export const UserForm = () => {
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      stream: "",
+    },
+    onSubmit: (values) => {
+      console.log("values received are:", { values });
+    },
+  });
+
   return (
     <>
       <h4>UserForm</h4>
