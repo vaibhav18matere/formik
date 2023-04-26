@@ -1,5 +1,5 @@
 import React from "react";
-import { Formik, Form, useField, Field } from "formik";
+import { Formik, Form, useField, Field, FieldArray } from "formik";
 import * as Yup from "yup";
 
 const initialValues = {
@@ -13,6 +13,7 @@ const initialValues = {
     twitter: "",
   },
   contacts: ["", ""],
+  phNumbers: [""], // array with only one empty string
 };
 
 const validationSchema = Yup.object({
@@ -140,6 +141,35 @@ export const SignupForm = () => {
           <div>
             <label htmlFor="secondaryPh">Secondary Contact</label>
             <Field type="number" id="secondaryPh" name="contacts[1]" />
+          </div>
+
+          <div>
+            <label>list of phone numbers</label>
+            <FieldArray name="phNumbers">
+              {(fieldArrayProps) => {
+                // console.log("field array props are", props);
+                const { push, remove, form } = fieldArrayProps;
+                const { values } = form;
+                const { phNumbers } = values;
+                return (
+                  <div>
+                    {phNumbers.map((numb, index) => (
+                      <div key={index}>
+                        <Field type="number" name={`phNumbers[${index}]`} />
+                        <button type="button" onClick={() => push("")}>
+                          Add phone no.
+                        </button>
+                        {index > 0 && (
+                          <button type="button" onClick={() => remove(index)}>
+                            Remove phone no.
+                          </button>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                );
+              }}
+            </FieldArray>
           </div>
 
           <button type="submit">Submit</button>

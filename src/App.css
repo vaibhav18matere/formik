@@ -28,6 +28,7 @@ input[type="number"] {
 }
 button { 
   padding: 0.6rem;
+  margin: 0.6rem;
   background: #70dd82;
   letter-spacing: 0.1rem;
   font-weight: bold;
