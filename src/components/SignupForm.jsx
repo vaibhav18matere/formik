@@ -12,6 +12,7 @@ const initialValues = {
     linkedin: "",
     twitter: "",
   },
+  contacts: ["", ""],
 };
 
 const validationSchema = Yup.object({
@@ -131,6 +132,14 @@ export const SignupForm = () => {
           <div>
             <label htmlFor="twitter">Twitter</label>
             <Field type="text" id="twitter" name="socials.twitter" />
+          </div>
+          <div>
+            <label htmlFor="primaryPh">Primary Contact</label>
+            <Field type="number" id="primaryPh" name="contacts[0]" />
+          </div>
+          <div>
+            <label htmlFor="secondaryPh">Secondary Contact</label>
+            <Field type="number" id="secondaryPh" name="contacts[1]" />
           </div>
 
           <button type="submit">Submit</button>
