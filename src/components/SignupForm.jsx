@@ -117,7 +117,7 @@ export const SignupForm = () => {
           </MySelect>
 
           <MyCheckbox name="acceptedTerms">
-            I accept the terms and conditions
+            <span>I accept the terms and conditions</span>
           </MyCheckbox>
 
           <button type="submit">Submit</button>

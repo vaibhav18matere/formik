@@ -78,7 +78,7 @@ export const UserForm = () => {
           {formik.errors.stream && formik.touched.stream && (
             <div className="error">{formik.errors.stream}</div>
           )}
-          <button type="submit">Submit : </button>
+          <button type="submit">Submit</button>
         </form>
       </div>
     </>

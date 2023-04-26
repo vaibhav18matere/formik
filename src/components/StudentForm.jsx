@@ -89,7 +89,7 @@ export const StudentForm = () => {
           {formik.errors.password && formik.touched.password && (
             <div className="error">{formik.errors.password}</div>
           )}
-          <button type="submit">Submit : </button>
+          <button type="submit">Submit</button>
         </form>
       </div>
     </>
