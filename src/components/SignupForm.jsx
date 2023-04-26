@@ -1,5 +1,5 @@
 import React from "react";
-import { Formik, Form, useField } from "formik";
+import { Formik, Form, useField, Field } from "formik";
 import * as Yup from "yup";
 
 const initialValues = {
@@ -8,6 +8,10 @@ const initialValues = {
   email: "",
   acceptedTerms: false, // for checkbox
   jobType: "", // for select
+  socials: {
+    linkedin: "",
+    twitter: "",
+  },
 };
 
 const validationSchema = Yup.object({
@@ -119,6 +123,15 @@ export const SignupForm = () => {
           <MyCheckbox name="acceptedTerms">
             <span>I accept the terms and conditions</span>
           </MyCheckbox>
+
+          <div>
+            <label htmlFor="linkedin">LikedIn</label>
+            <Field type="text" id="linkedin" name="socials.linkedin" />
+          </div>
+          <div>
+            <label htmlFor="twitter">Twitter</label>
+            <Field type="text" id="twitter" name="socials.twitter" />
+          </div>
 
           <button type="submit">Submit</button>
         </Form>
