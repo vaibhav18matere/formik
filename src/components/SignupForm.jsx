@@ -91,6 +91,8 @@ export const SignupForm = () => {
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
+        validateOnChange={false}
+        validateOnBlur={false}
       >
         <Form>
           <MyTextInput
